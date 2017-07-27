@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+HEROKU_BIN="/usr/local/bin/heroku"
+
+case "$1" in
+  "talkdesk")
+    $HEROKU_BIN accounts:set personal
+    $HEROKU_BIN accounts:remove talkdesk
+    HEROKU_ORGANIZATION=talkdesk $HEROKU_BIN accounts:add talkdesk --sso
+    $HEROKU_BIN accounts:set talkdesk
+    ;;
+  "personal")
+    $HEROKU_BIN accounts:set personal
+    ;;
+  *)
+    printf '%s\n' "Logged in as $($HEROKU_BIN accounts:current)"
+    sleep 1
+    $HEROKU_BIN ${@:1}
+    ;;
+esac
+
