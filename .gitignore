@@ -1,0 +1,12 @@
+# Ignore everything
+**
+
+# But not these files...
+!*.vimrc
+!*.vim
+!*.bashrc
+!.gitignore
+!.profile.dist
+!bin/
+!LICENSE
+!README.md
